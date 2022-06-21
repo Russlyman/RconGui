@@ -1,0 +1,36 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+
+    runs-on: windows-2022
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Get Git tag name
+      id: get_version
+      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\/v/}
+      shell: bash
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: Publish project
+      run: dotnet publish RconGui -c Release -o publish -r win-x64 -p:Version=${{ steps.get_version.outputs.VERSION }} -p:PublishSingleFile=true -p:PublishReadyToRun=true --no-self-contained
+    - name: Create archive
+      uses: vimtor/action-zip@v1
+      with:
+        files: publish/RconGui.exe LICENSE
+        dest: RconGui-${{ steps.get_version.outputs.VERSION }}.zip
+    - name: Create release
+      uses: marvinpinto/action-automatic-releases@latest
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        prerelease: false
+        files: RconGui-${{ steps.get_version.outputs.VERSION }}.zip
