@@ -148,6 +148,7 @@
             this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "Russlyman\'s RCon GUI";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

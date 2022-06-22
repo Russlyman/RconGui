@@ -61,5 +61,10 @@ namespace RconGui
             e.Handled = true;
             e.SuppressKeyPress = true;
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _rconClient.Close();
+        }
     }
 }
