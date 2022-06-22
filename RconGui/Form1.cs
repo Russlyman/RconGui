@@ -6,11 +6,13 @@ namespace RconGui
     public partial class Form1 : Form
     {
         private readonly RconClient _rconClient;
+        private readonly ConnectForm _connectForm;
 
         public Form1()
         {
             InitializeComponent();
             _rconClient = new RconClient();
+            _connectForm = new ConnectForm(_rconClient);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -20,8 +22,7 @@ namespace RconGui
 
         private void connectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var connectForm = new ConnectForm(_rconClient);
-            connectForm.Show();
+            _connectForm.ShowDialog();
         }
 
         private void clearConsoleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -65,6 +66,7 @@ namespace RconGui
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             _rconClient.Close();
+            _connectForm.Dispose();
         }
     }
 }
