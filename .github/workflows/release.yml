@@ -26,7 +26,7 @@ jobs:
     - name: Create archive
       uses: vimtor/action-zip@v1
       with:
-        files: publish/RconGui.exe LICENSE
+        files: publish/RconGui.exe LICENSE THIRDPARTYLEGALNOTICES
         dest: RconGui-${{ steps.get_version.outputs.VERSION }}.zip
     - name: Create release
       uses: marvinpinto/action-automatic-releases@latest
