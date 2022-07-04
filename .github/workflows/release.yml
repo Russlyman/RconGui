@@ -22,11 +22,11 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Publish project
-      run: dotnet publish RconGui -c Release -o publish -r win-x64 -p:Version=${{ steps.get_version.outputs.VERSION }} -p:PublishSingleFile=true -p:PublishReadyToRun=true --no-self-contained
+      run: dotnet publish RconGui -c Release -o publish -r win-x64 -p:Version=${{ steps.get_version.outputs.VERSION }} -p:PublishSingleFile=true -p:PublishReadyToRun=true --self-contained
     - name: Create archive
       uses: vimtor/action-zip@v1
       with:
-        files: publish/RconGui.exe LICENSE THIRDPARTYLEGALNOTICES
+        files: publish/RconGui.exe publish/D3DCompiler_47_cor3.dll publish/PenImc_cor3.dll publish/PresentationNative_cor3.dll publish/vcruntime140_cor3.dll publish/wpfgfx_cor3.dll LICENSE THIRDPARTYLEGALNOTICES
         dest: RconGui-${{ steps.get_version.outputs.VERSION }}.zip
     - name: Create release
       uses: marvinpinto/action-automatic-releases@latest
