@@ -15,14 +15,14 @@ While RconGui should support all implementations of the Quake III RCon protocol,
 **For Windows x64 only!**
 
 - Download the ZIP file from the assets section in the [latest release](https://github.com/Russlyman/RconGui/releases/latest)
-- Extract ZIP
+- Extract ZIP into folder
 - Run RconGui.exe
 ## Build Yourself
 **You must install .NET 6 to build this project!**
 
 - Download and extract the latest [source code](https://github.com/Russlyman/RconGui/archive/refs/heads/main.zip)
 - Navigate to the folder that contains `README.MD`
-- Run the command `dotnet publish RconGui -c Release -o publish -r win-x64 -p:PublishSingleFile=true -p:PublishReadyToRun=true --no-self-contained`
+- Run the command `dotnet publish RconGui -c Release -o publish -r win-x64 -p:PublishSingleFile=true -p:PublishReadyToRun=true --self-contained`
 - See the `publish` folder which contains the freshly built binary
 ## License
 
