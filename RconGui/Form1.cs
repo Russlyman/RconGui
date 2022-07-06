@@ -65,7 +65,7 @@ namespace RconGui
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _rconClient.Close();
+            _rconClient.Dispose();
             _connectForm.Dispose();
         }
     }

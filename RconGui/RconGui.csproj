@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Russlyman.Rcon" Version="1.0.4" />
+    <PackageReference Include="Russlyman.Rcon" Version="2.0.1" />
   </ItemGroup>
 
   <ItemGroup>
